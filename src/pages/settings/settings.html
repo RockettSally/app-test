@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (submit)="setDefaults()">
+    <ion-card>
+      <ion-card-header>
+        Category
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select [(ngModel)]="category" name="category">
+            <ion-option value="gaming">Gaming</ion-option>
+            <ion-option value="sports">Sports</ion-option>
+            <ion-option value="pics">Pics</ion-option>
+            <ion-option value="food">Food</ion-option>
+            <ion-option value="news">News</ion-option>
+            <ion-option value="music">Music</ion-option>
+            <ion-option value="funny">Funny</ion-option>
+            <ion-option value="art">Art</ion-option>
+            <ion-option value="gifs">GIFs</ion-option>
+            <ion-option value="todayilearned">Today I Learned</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Limit of Posts
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select [(ngModel)]="limit" name="limit">
+            <ion-option value="15">15 Posts</ion-option>
+            <ion-option value="25">25 Posts</ion-option>
+            <ion-option value="50">50 Posts</ion-option>
+            <ion-option value="100">100 Posts</ion-option>
+            <ion-option value="150">150 Posts (!)</ion-option>
+            <ion-option value="250">250 Posts (!)</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-row>
+      <ion-col>
+        <button ion-button type="submit" block>SAVE SETTINGS</button>
+      </ion-col>
+    </ion-row>
+    </form>
+    <p>Change what settings you want to appear as default every time you start this app. Options with a (!) assigned should be chosen carefully.</p>
+</ion-content>

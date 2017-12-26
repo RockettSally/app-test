@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      {{item.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img *ngIf="item.preview" src="{{item.preview.images[0].source.url}}" onError="this.src='assets/imgs/nopreview.png'">
+    <ion-card-content>
+        <ion-badge *ngIf="item.thumbnail == 'nsfw'" color="dark">NSFW</ion-badge>
+        <ion-badge *ngIf="item.spoiler" color="danger">Spoiler Alert</ion-badge>
+      <ion-card-title>
+        {{item.title}}
+      </ion-card-title>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>Author <ion-note item-right>{{item.author}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="time" item-left></ion-icon>Date Created <ion-note item-right>{{item.created | date:medium}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="thumbs-up" item-start></ion-icon>Likes <ion-badge item-end>{{item.score}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="chatboxes" item-start></ion-icon>Comments <ion-badge item-end color="secondary">{{item.num_comments}}</ion-badge>
+      </ion-item>
+      <a ion-button full target="_blank" href="http://reddit.com/{{item.permalink}}">VIEW ON REDDIT</a>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

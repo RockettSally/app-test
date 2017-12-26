@@ -5,8 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { RedditService } from './services/reddit.service';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [RedditService]
 })
 export class MyApp {
   rootPage:any = TabsPage;

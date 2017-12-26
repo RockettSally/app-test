@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Reddits Post-Pull
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <h6><b>Posts:</b></h6>
+
+  </ion-row>
+  <ion-list>
+      <ion-item>
+        <ion-label fixed>Category</ion-label>
+        <ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+          <ion-option value="gaming">Gaming</ion-option>
+          <ion-option value="sports">Sports</ion-option>
+          <ion-option value="food">Food</ion-option>
+          <ion-option value="news">News</ion-option>
+          <ion-option value="music">Music</ion-option>
+          <ion-option value="funny">Funny</ion-option>
+          <ion-option value="art">Art</ion-option>
+          <ion-option value="gifs">GIFs</ion-option>
+          <ion-option value="todayilearned">Today I Learned</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="viewItem(item.data)">
+      <ion-thumbnail *ngIf="item.data.thumbnail && item.data.thumbnail != 'nsfw'" item-left>
+        <img src="{{item.data.thumbnail}}">
+      </ion-thumbnail>
+      <h2>{{item.data.title}}</h2>
+      <p>
+        <ion-badge color="dark" *ngIf="item.data.thumbnail == 'nsfw'" item-end>NSFW</ion-badge>
+        <ion-badge color="danger" *ngIf="item.data.spoiler" item-end>Spoiler Alert</ion-badge>
+        <ion-icon name="thumbs-up" item-start></ion-icon><ion-badge item-end>{{item.data.score}}</ion-badge>
+        <ion-icon name="chatboxes" item-start></ion-icon><ion-badge color="secondary" item-end>{{item.data.num_comments}}</ion-badge>
+      </p>
+      <button ion-button clear item-right (click)="viewItem(item.data)"><ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+</ion-content>
