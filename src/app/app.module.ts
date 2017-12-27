@@ -7,7 +7,6 @@ import { HttpModule } from "@angular/http";
 import { AboutPage } from '../pages/about/about';
 
 import { RedditsPage } from '../pages/reddits/reddits';
-import { SettingsPage } from '../pages/settings/settings';
 
 import { DetailsPage } from '../pages/details/details';
 
@@ -21,7 +20,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     RedditsPage,
-    SettingsPage,
     DetailsPage,
     TabsPage
   ],
@@ -35,7 +33,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     AboutPage,
     RedditsPage,
-    SettingsPage,
     DetailsPage,
     TabsPage
   ],

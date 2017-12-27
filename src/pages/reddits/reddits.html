@@ -6,17 +6,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-row>
-    <h6><b>Posts:</b></h6>
-
-  </ion-row>
+<ion-content>
   <ion-list>
       <ion-item>
         <ion-label fixed>Category</ion-label>
-        <ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+        <ion-select (ionChange)="changeSelects()" [(ngModel)]="category" name="category">
           <ion-option value="gaming">Gaming</ion-option>
           <ion-option value="sports">Sports</ion-option>
+          <ion-option value="pics">Pics</ion-option>
           <ion-option value="food">Food</ion-option>
           <ion-option value="news">News</ion-option>
           <ion-option value="music">Music</ion-option>
@@ -24,6 +21,17 @@
           <ion-option value="art">Art</ion-option>
           <ion-option value="gifs">GIFs</ion-option>
           <ion-option value="todayilearned">Today I Learned</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Post Limit</ion-label>
+        <ion-select (ionChange)="changeSelects()" [(ngModel)]="limit" name="limit">
+          <ion-option value="15">15 Posts</ion-option>
+          <ion-option value="25">25 Posts</ion-option>
+          <ion-option value="50">50 Posts</ion-option>
+          <ion-option value="100">100 Posts</ion-option>
+          <ion-option value="150">150 Posts (!)</ion-option>
+          <ion-option value="250">250 Posts (!)</ion-option>
         </ion-select>
       </ion-item>
   </ion-list>
@@ -39,7 +47,7 @@
         <ion-icon name="thumbs-up" item-start></ion-icon><ion-badge item-end>{{item.data.score}}</ion-badge>
         <ion-icon name="chatboxes" item-start></ion-icon><ion-badge color="secondary" item-end>{{item.data.num_comments}}</ion-badge>
       </p>
-      <button ion-button clear item-right (click)="viewItem(item.data)"><ion-icon name="arrow-forward"></ion-icon></button>
+      <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
     </ion-item>
   </ion-list>
 </ion-content>
