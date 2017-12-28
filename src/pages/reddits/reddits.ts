@@ -45,7 +45,7 @@ export class RedditsPage {
     if(localStorage.getItem('limit') != null){
       this.limit = localStorage.getItem('limit');
     } else {
-      this.limit = '10';
+      this.limit = '5';
     }
   }
 

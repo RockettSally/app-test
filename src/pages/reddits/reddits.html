@@ -31,12 +31,11 @@
       <ion-item>
         <ion-label fixed>Post Limit</ion-label>
         <ion-select [selectOptions]="selectLimit" (ionChange)="changeSelects()" [(ngModel)]="limit" name="limit">
+          <ion-option value="15">5 Posts</ion-option>
           <ion-option value="15">15 Posts</ion-option>
           <ion-option value="25">25 Posts</ion-option>
           <ion-option value="50">50 Posts</ion-option>
           <ion-option value="100">100 Posts</ion-option>
-          <ion-option value="150">150 Posts (!)</ion-option>
-          <ion-option value="250">250 Posts (!)</ion-option>
         </ion-select>
       </ion-item>
   </ion-list>
@@ -48,7 +47,7 @@
       <h2>{{item.data.title}}</h2>
       <p>
         <ion-badge color="dark" *ngIf="item.data.thumbnail == 'nsfw'" item-end>NSFW</ion-badge>
-        <ion-badge color="danger" *ngIf="item.data.spoiler" item-end>Spoiler Alert</ion-badge>
+        <ion-badge color="danger" *ngIf="item.data.spoiler" item-end>Spoiler</ion-badge>
         <ion-icon name="thumbs-up" item-start></ion-icon><ion-badge item-end>{{item.data.score}}</ion-badge>
         <ion-icon name="chatboxes" item-start></ion-icon><ion-badge color="secondary" item-end>{{item.data.num_comments}}</ion-badge>
       </p>
