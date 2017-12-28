@@ -11,8 +11,24 @@ export class RedditsPage {
   items: any;
   category: any;
   limit: any;
+  selectLimit: any;
+  selectCategory: any;
+
   constructor(public navCtrl: NavController, private redditService: RedditService) {
     this.getDefaults();
+
+    this.selectCategory = {
+      title: 'Category',
+      subTitle: 'Select the category to show',
+      mode: 'ios'
+    }
+
+    this.selectLimit = {
+      title: 'Post Limit',
+      subTitle: 'Select the amount of post to be shown',
+      mode: 'ios'
+    }
+
   }
 
   ngOnInit(){
