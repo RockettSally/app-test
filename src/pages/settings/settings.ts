@@ -36,22 +36,6 @@ export class SettingsPage {
   setDefaults(){
     localStorage.setItem('category',this.category);
     localStorage.setItem('limit',this.limit);
-    this.toast('Settings Saved Successfully!');
-  }
-
-  toast(text: String) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'bottom',
-      showCloseButton: true
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
   }
 
 }

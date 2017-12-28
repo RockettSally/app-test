@@ -17,7 +17,7 @@ export class TabsPage {
   tab1Root = RedditsPage;
   tab2Root = AboutPage;
 
-  constructor(private redditService: RedditService) {
+  constructor() {
 
   }
 
