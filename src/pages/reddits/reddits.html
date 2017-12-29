@@ -7,51 +7,59 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-      <ion-item>
-        <ion-label fixed>Category</ion-label>
-        <ion-select [selectOptions]="selectCategory" (ionChange)="changeSelects()" [(ngModel)]="category" name="category">
-          <ion-option value="gaming">Gaming</ion-option>
-          <ion-option value="sports">Sports</ion-option>
-          <ion-option value="pics">Pics</ion-option>
-          <ion-option value="movies">Movies</ion-option>
-          <ion-option value="food">Food</ion-option>
-          <ion-option value="news">News</ion-option>
-          <ion-option value="worldnews">World News</ion-option>
-          <ion-option value="aww">Cute Stuff</ion-option>
-          <ion-option value="technology">Technology</ion-option>
-          <ion-option value="wtf">What The F***</ion-option>
-          <ion-option value="funny">Funny</ion-option>
-          <ion-option value="art">Art</ion-option>
-          <ion-option value="gifs">GIFs</ion-option>
-          <ion-option value="todayilearned">Today I Learned</ion-option>
-          <ion-option value="The_Donald">Donald Trump</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label fixed>Post Limit</ion-label>
-        <ion-select [selectOptions]="selectLimit" (ionChange)="changeSelects()" [(ngModel)]="limit" name="limit">
-          <ion-option value="15">5 Posts</ion-option>
-          <ion-option value="15">15 Posts</ion-option>
-          <ion-option value="25">25 Posts</ion-option>
-          <ion-option value="50">50 Posts</ion-option>
-          <ion-option value="100">100 Posts</ion-option>
-        </ion-select>
-      </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item *ngFor="let item of items" (click)="viewItem(item.data)">
-      <ion-thumbnail *ngIf="item.data.thumbnail && !item.data.spoiler && item.data.thumbnail != 'nsfw'" item-left>
-        <img src="{{item.data.thumbnail}}">
-      </ion-thumbnail>
-      <h2>{{item.data.title}}</h2>
-      <p>
-        <ion-badge color="dark" *ngIf="item.data.thumbnail == 'nsfw'" item-end>NSFW</ion-badge>
-        <ion-badge color="danger" *ngIf="item.data.spoiler" item-end>Spoiler</ion-badge>
-        <ion-icon name="thumbs-up" item-start></ion-icon><ion-badge item-end>{{item.data.score}}</ion-badge>
-        <ion-icon name="chatboxes" item-start></ion-icon><ion-badge color="secondary" item-end>{{item.data.num_comments}}</ion-badge>
-      </p>
-      <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
-    </ion-item>
-  </ion-list>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+    <ion-list>
+        <ion-item>
+          <ion-label fixed>Category</ion-label>
+          <ion-select [selectOptions]="selectCategory" (ionChange)="changeSelects()" [(ngModel)]="category" name="category">
+            <ion-option value="gaming">Gaming</ion-option>
+            <ion-option value="sports">Sports</ion-option>
+            <ion-option value="pics">Pics</ion-option>
+            <ion-option value="movies">Movies</ion-option>
+            <ion-option value="food">Food</ion-option>
+            <ion-option value="news">News</ion-option>
+            <ion-option value="worldnews">World News</ion-option>
+            <ion-option value="aww">Cute Stuff</ion-option>
+            <ion-option value="technology">Technology</ion-option>
+            <ion-option value="wtf">What The F***</ion-option>
+            <ion-option value="funny">Funny</ion-option>
+            <ion-option value="art">Art</ion-option>
+            <ion-option value="gifs">GIFs</ion-option>
+            <ion-option value="todayilearned">Today I Learned</ion-option>
+            <ion-option value="The_Donald">Donald Trump</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>Post Limit</ion-label>
+          <ion-select [selectOptions]="selectLimit" (ionChange)="changeSelects()" [(ngModel)]="limit" name="limit">
+            <ion-option value="5">5 Posts</ion-option>
+            <ion-option value="15">15 Posts</ion-option>
+            <ion-option value="25">25 Posts</ion-option>
+            <ion-option value="50">50 Posts</ion-option>
+            <ion-option value="100">100 Posts</ion-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+
+        <ion-list>
+          <ion-item *ngFor="let item of items" (click)="viewItem(item.data)">
+            <ion-thumbnail *ngIf="item.data.thumbnail && !item.data.spoiler && item.data.thumbnail != 'nsfw'" item-left>
+              <img src="{{item.data.thumbnail}}">
+            </ion-thumbnail>
+            <h2>{{item.data.title}}</h2>
+            <p>
+              <ion-badge color="dark" *ngIf="item.data.thumbnail == 'nsfw'" item-end>NSFW</ion-badge>
+              <ion-badge color="danger" *ngIf="item.data.spoiler" item-end>Spoiler</ion-badge>
+              <ion-icon name="thumbs-up" item-start></ion-icon><ion-badge item-end>{{item.data.score}}</ion-badge>
+              <ion-icon name="chatboxes" item-start></ion-icon><ion-badge color="secondary" item-end>{{item.data.num_comments}}</ion-badge>
+            </p>
+            <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
+          </ion-item>
+        </ion-list>
 </ion-content>

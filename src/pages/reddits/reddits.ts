@@ -31,6 +31,20 @@ export class RedditsPage {
 
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    this.category = localStorage.getItem('category');
+    this.limit = localStorage.getItem('limit');
+
+    this.getPosts(this.category,this.limit);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   ngOnInit(){
     this.getPosts(this.category,this.limit);
   }
